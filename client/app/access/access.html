@@ -1,0 +1,26 @@
+<div class="col-md-12" ng-controller="AccessCtrl">
+    <ul>
+        <li><strong>name:</strong><input type="text" ng-model="name"/></li>
+        <li><strong>gender:</strong><input type="text" ng-model="gender"/></li>
+        <li><strong>hobby:</strong><input type="text" ng-model="hobby"/></li>
+    </ul>
+    <button ng-click="accessAdd()">ADD</button>
+    <br/><br/>
+    <ul>
+        <li class="head" ng-show="allData.length!=0">
+            <span>name</span>
+            <span>gender</span>
+            <span>hobby</span>
+            <span>operate</span>
+        </li>
+        <li ng-repeat="item in allData">
+            <span>{{item.name}}</span>
+            <span>{{item.gender}}</span>
+            <span>{{item.hobby}}</span>
+            <button ng-click="deleteData(item)">delete</button>
+            <button ui-sref="editAccess({id:item._id})">edit</button>
+        </li>
+    </ul>
+
+    <!--<div ui-view></div>-->
+</div>

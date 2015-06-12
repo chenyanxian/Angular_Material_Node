@@ -1,0 +1,10 @@
+<md-content>
+    <div class="api_detail_content" ng-controller="ApiDetailCtrl">
+        <ul class="api_detail_tabs">
+            <li ui-sref="apis.level2.document.detail({id:item.path})" ng-repeat="item in resourceList.resouces" title="{{item.path}}">
+                {{item.path}}
+            </li>
+        </ul>
+        <div class="api_detail_content_right" ui-view=""></div>
+    </div>
+</md-content>

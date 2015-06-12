@@ -1,0 +1,21 @@
+<div class="apis-top-contend">
+    <label class="apis-top-label" ui-sref="apis">{{itemName}}</label>
+    <md-button class="import-button md-raised md-primary">Add Test</md-button>
+</div>
+
+<div class="tabsdemoDynamicHeight">
+    <md-content class="md-padding">
+        <md-tabs md-dynamic-height="" md-selected="1" md-border-bottom="">
+            <md-tab>
+                <md-tab-label><span ui-sref="kaapi.level2.test">Tests</span></md-tab-label>
+            </md-tab>
+            <md-tab>
+                <md-tab-label ><span ui-sref="apis.level2.document">Document</span></md-tab-label>
+            </md-tab>
+            <md-tab>
+                <md-tab-label><span ui-sref="apis.level2.ymal">YMAL</span></md-tab-label>
+            </md-tab>
+        </md-tabs>
+    </md-content>
+</div>
+<div ui-view></div>

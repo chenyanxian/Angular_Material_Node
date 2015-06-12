@@ -1,0 +1,41 @@
+<div class="api_detail_cont">
+    <div class="item">
+        <dl class="sub_item">
+            <dt><strong>pet:</strong>Everything about your Pets</dt>
+            <dd ng-repeat="(itemIndex,item) in ApiDetailData" class="status_expand status_{{item.operations[0].method}}" ng-click="expand_method(itemIndex)">
+                <dl>
+                    <dt class="method method_{{item.operations[0].method}}" ><strong>{{item.operations[0].method}}</strong><span>{{item.path}}</span></dt>
+                    <dd class="method_cont" >
+                        <!--<div class="method_detail" ng-repeat="detail in method.detail" ng-switch="detail.title">-->
+                        <div class="method_detail" >
+                            <h3>description</h3>
+                            <p>{{item.operations[0].summary}}</p>
+                            <!--<ul>-->
+                            <!--<li ng-repeat="column in detail.header"><strong>{{column.name}}</strong></li>-->
+                            <!--</ul>-->
+                            <h3>Parameters</h3>
+                            <ul>
+                                <li ng-repeat="column in apiParamHeader"><strong>{{column.header}}</strong></li>
+                            </ul>
+                            <ul ng-repeat="(rowindex,row) in item.operations[0].parameters" ng-class="">
+                                <li ng-repeat="column in apiParamHeader">{{row[column.property]}}</li>
+                                <!--<li>{{row.description}}</li>
+                                <li>{{row.name}}</li>
+                                <li>{{row.paramType}}</li>
+                                <li>{{row.required}}</li>
+                                <li>{{row.type}}</li>-->
+                            </ul>
+                            <h3>Responses</h3>
+                            <ul>
+                                <li ng-repeat="column in apiResponseHeader"><strong>{{column.header}}</strong></li>
+                            </ul>
+                            <ul ng-repeat="(rowindex,row) in item.operations[0].responseMessages" ng-class="">
+                                <li ng-repeat="column in apiResponseHeader">{{row[column.property]}}</li>
+                            </ul>
+                        </div>
+                    </dd>
+                </dl>
+            </dd>
+        </dl>
+    </div>
+</div>

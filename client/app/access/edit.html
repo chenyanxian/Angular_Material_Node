@@ -1,0 +1,14 @@
+<div ng-if="isShow">
+<div>Edit page</div>
+<ul>
+    <li><strong>name:</strong><input type="text" ng-model="editData.name"></li>
+    <li><strong>name:</strong><input type="text" ng-model="editData.gender"></li>
+    <li><strong>name:</strong><input type="text" ng-model="editData.hobby"></li>
+</ul>
+<button ng-click="save()">save</button>
+</div>
+<!--
+1：在列表页面，点击Edit按钮，跳转到Edit页面（带参数ID）
+2: 在Edit页面，根据传递过来的I查询数据库返回一个对象，并且把这个对象给绑定到Edit页面
+3: 修改过后保存
+4:保存成功后页面根据ui－view跳转-->

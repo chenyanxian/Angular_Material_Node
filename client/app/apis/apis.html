@@ -1,0 +1,64 @@
+<div class="apis-top-contend">
+    <label class="apis-top-label">APIs</label>
+    <md-button class="import-button md-raised md-primary">Import API</md-button>
+</div>
+<div class="col-md-12" ng-controller="ApisCtrl">
+    <md-content>
+        <md-card>
+            <md-card-content>
+                <table class="md-card-content-table">
+                    <tbody>
+                    <tr class="colunmHeader">
+                        <td class="{{column.header}}" ng-repeat="column in gridHeader" ng-click="changeSorting(column.property)" ng-switch="column.columnStyle">
+
+                            <div ng-switch-default>
+                                <div class="head_cell_content tibco-grid-unsortable">
+                                    <span class="cell-value">{{column.header}}</span>
+                                </div>
+                            </div>
+                            <div ng-switch-when="name">
+                                <div class="head_cell_content">
+                                    <span class="cell-value">{{column.header}}</span>
+                                </div>
+                            </div>
+                            <div class="check_box" ng-switch-when="checkbox">
+                                <md-checkbox ng-model="bwGridSelectAll"
+                                             ng-change="selectAllRows()"
+                                        class="md-warn">
+                                </md-checkbox>
+
+                            </div>
+                        </td>
+                        <td>
+                            <md-select ng-model="columns" placeholder="columns">
+                                <md-option ng-repeat="column in columns" value="{{column}}">{{column}}</md-option>
+                            </md-select>
+                        </td>
+                    </tr>
+                    <tr class="dataView" data-id="row.id"
+                        ng-repeat="(indexOfRow, row) in gridRow |orderBy:sort.column:sort.descending">
+                        <td ng-repeat="column in gridHeader" ng-switch="column.columnStyle">
+                            <div ng-switch-default>
+                                <div class="head_cell_content tibco-grid-unsortable">
+                                    <span class="cell-value">{{row[column.property]}}</span>
+                                </div>
+                            </div>
+                            <div ng-switch-when="name">
+                                <div class="head_cell_content">
+                                    <a ui-sref="apis.level2.document({instanceId: row._id})"><span class="cell-value">{{row[column.property]}}</span></a>
+                                </div>
+                            </div>
+                            <div class="check_box" ng-switch-when="checkbox">
+                                <md-checkbox ng-model="row.gridRowSelectedProperty" ng-change="selectOneRow(row, gridRow, indexOfRow)"
+                                             class="md-warn">
+                                </md-checkbox>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </md-card-content>
+        </md-card>
+    </md-content>
+
+</div>

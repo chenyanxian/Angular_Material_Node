@@ -1,0 +1,15 @@
+db:
+  image: dockerfile/mongodb
+  volumes:
+    - /opt/mongodb:/data/db
+  ports:
+    - "27017:27017"
+  command: mongod --smallfiles
+web:
+  build: .
+  environment:
+    - NODE_ENV=development
+  ports:
+    - "9000:9000"
+  links:
+    - db:mongodb

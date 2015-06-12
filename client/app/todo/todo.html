@@ -1,0 +1,43 @@
+<div class="col-md-12">
+    <md-content>
+        <md-card>
+            <md-card-content>
+                <h2 class="md-title">TODO list</h2>
+
+                <div class="todo-new">
+                    <div layout="column">
+                        <br/>
+                        <md-content layout-padding>
+                            <md-input-container class="md-icon-float column">
+                                <form ng-submit="$emit('todoAdd', newTodo)">
+                                    <!-- Use floating label instead of placeholder -->
+                                    <label>Description</label>
+                                    <md-icon md-svg-src="img/icons/ic_person_24px.svg" class="todo-desc">Description
+                                    </md-icon>
+                                    <input ng-model="newTodo.desc" type="text">
+                                    <md-button class="md-raised md-primary" type="submit">Add</md-button>
+                                </form>
+                            </md-input-container>
+                        </md-content>
+
+                        <md-content layout-padding class="autoScroll" class="todo-list">
+
+                            <li class="todo-list-item" ng-repeat="(index, todo) in data.todos | orderBy: '-_id' ">
+                                    <md-checkbox ng-model="todo.isDone"
+                                                 ng-change=" $emit('todoUpdate', todo)"></md-checkbox>
+                                    <p md-list-item-text class="todo-desc" ng-hide="todo.isEditing" todo-desc >
+                                        {{todo.desc}}</p>
+                                    <input md-list-item-text class="todo-desc-editing" ng-model="todo.desc" ng-show="todo.isEditing" value="{{todo.desc}}"
+                                           ng-change="$emit('todoUpdate', todo)" ng-blur="todo.isEditing = false" />
+                                    <md-icon md-svg-icon="md-close"
+                                             ng-click="$emit('todoDelete', todo)"></md-icon>
+
+                            </li>
+                        </md-content>
+                    </div>
+                </div>
+            </md-card-content>
+        </md-card>
+    </md-content>
+
+</div>
